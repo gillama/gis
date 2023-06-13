@@ -1,0 +1,124 @@
+.sidebarOpen {
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+    height: 100vh;
+    background-color: rgb(10,25,41);
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarClosed {
+    height: 100vh;
+    background-color: rgb(10,25,41);
+    transition: width 0.3s ease-in-out;
+    width: 60px;
+    text-align: center;
+}
+
+
+.sidebarClosed button {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+
+.sidebarClosed > div {
+    border-bottom: 1px solid #b2bac26b;
+}
+
+
+.sidebarClosed button:hover{
+    background-color:rgb(21, 51, 83);
+    cursor: pointer;
+}
+
+.sidebarClosed i{
+    font-size: 24px;
+    color: #B2BAC2;
+}
+
+
+.sidebarClosedDisplay button,
+.sidebarClosedLayers button {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.sidebarClosedDisplay button:focus,
+.sidebarClosedLayers button:focus {
+    border-right: 5px solid rgb(20, 79, 141);
+}
+
+.btnMenu {
+    color: #B2BAC2;
+    background-color: transparent;
+    border: none;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.sidebarOpen > div {
+    border-bottom: 1px solid #b2bac24d;
+    width: 100%;
+    color: #b2bac2a2;
+}
+
+.sidebarOpen p {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+
+.sidebarOpenDisplay,
+.sidebarOpenLayers {
+    padding-top: 12px;
+}
+
+.sidebarOpenDisplay {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarOpenDisplay button,
+.sidebarOpenLayers button{
+    width: 100%;
+    background-color: transparent;
+    text-align: left;
+    color:#B2BAC2;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding:12px;
+    border: none;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  } 
+
+.sidebarOpenDisplay button:hover,
+.sidebarOpenLayers button:hover{
+    background-color:rgb(21, 51, 83);
+    cursor: pointer;  
+} 
+
+.sidebarOpenDisplay button:focus,
+.sidebarOpenLayers button:focus{
+    border-right: 5px solid rgb(20, 79, 141);
+} 
+
+.sidebarOpen i {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.btnMenu i {
+    font-size: 35px;
+} 
+
+
+ 
