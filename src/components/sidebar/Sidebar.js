@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import classes from './Sidebar.module.css'
+import { useNavigate } from 'react-router-dom';
 
+import classes from './Sidebar.module.css';
+import routes from '../../routes';
 
-const Siderbar = () => {
+const Sidebar = () => {
+    const navigate = useNavigate();
 
     const [open, setopen] = useState(false);
     const toggleOpen = () => {
@@ -18,7 +20,7 @@ const Siderbar = () => {
                 </button>
             </div>
             <div className={classes.sidebarDisplay}>
-                { open ? 
+                { open ?
                     <div className={classes.sidebarOpenDisplay}>
                         <p>IZBORNIK</p>
                         <button><i className="bi bi-map"></i>KARTA</button>
@@ -26,18 +28,18 @@ const Siderbar = () => {
                     </div>
                     :
                     <div className={classes.sidebarClosedDisplay}>
-                        <button><i className="bi bi-map"></i></button>
-                        <button><i className="bi bi-table"></i></button>
+                        <button onClick={ () => { navigate(routes.mapPage) } }><i className="bi bi-map"></i></button>
+                        <button onClick={ () => { navigate(routes.dataPage) } }><i className="bi bi-table"></i></button>
                     </div>
-                    }     
+                    }
             </div>
             <div className={classes.sidebarLayers}>
-                {open ? 
+                {open ?
                     <div className={classes.sidebarOpenLayers}>
                         <p>SLOJEVI</p>
                         <button><i className="bi bi-house"></i> OBJEKTI</button>
                     </div>
-                : 
+                :
                 <div className={classes.sidebarClosedLayers}>
                     <button><i className="bi bi-house"></i></button>
                 </div>
@@ -49,4 +51,4 @@ const Siderbar = () => {
 };
 
 
-export default Siderbar;
+export default Sidebar;
