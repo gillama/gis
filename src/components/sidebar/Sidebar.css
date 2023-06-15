@@ -1,0 +1,103 @@
+.sidebar {
+    transition: width 0.3s ease-in-out;
+    background-color: rgb(10,25,41);
+    height: 100vh;
+}
+
+.sidebar.opened {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding-top: 25px;
+}
+
+.sidebar.closed {
+    width: 65px;
+    text-align: center;
+}
+.sidebar.closed button {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+.sidebar.closed > div {
+    border-bottom: 1px solid #b2bac26b;
+}
+.sidebar.closed button:hover {
+    background-color:rgb(21, 51, 83);
+}
+.sidebar.closed i {
+    font-size: 20px;
+    color: #B2BAC2;
+}
+.sidebar.closed .menu button {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 65px;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.sidebar .sidebar-toggle {
+    color: #B2BAC2;
+    background-color: rgb(10,25,41);
+    border: none;
+    border-bottom: 1px solid #b2bac26b !important;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.sidebar .sidebar-toggle i {
+    font-size: 30px;
+}
+
+.sidebar.opened .menu {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #b2bac24d;
+    width: 250px;
+    color: #b2bac2a2;
+}
+.sidebar.opened .menu p {
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 15px auto;
+}
+.sidebar.opened .menu button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    text-align: left;
+    color: #B2BAC2;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding:12px;
+    cursor: pointer;
+    border: none;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+.sidebar.opened .menu button:hover {
+    background-color:#153353;
+}
+.sidebar.opened .menu button i {
+    font-size: 20px;
+    margin-right: 20px;
+}
+.sidebar.opened .form-check {
+    caret-color: transparent;
+    margin-left: 40px;
+    margin-bottom: 0 !important;
+    min-height: 1em !important;
+}
+.sidebar.opened .form-check .form-check-input {
+    background-color: rgb(20, 79, 141) !important;
+    border-color: rgb(20, 79, 141) !important;
+}
+
+.active {
+    border-right: 5px solid rgb(20, 79, 141) !important;
+}

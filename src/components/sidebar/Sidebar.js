@@ -1,54 +1,65 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import classes from './Sidebar.module.css';
 import routes from '../../routes';
+
+import './Sidebar.css';
 
 const Sidebar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const [open, setopen] = useState(false);
-    const toggleOpen = () => {
-        setopen(!open);
-    }
+    const [opened, setOpened] = useState(false);
 
     return (
-        <div className={open ? classes.sidebarOpen : classes.sidebarClosed}>
-            <div className={classes.siderbar}>
-                <button className={classes.btnMenu} onClick={toggleOpen}>
-                    {open ? <i className="bi bi-x"></i> :  <i className="bi bi-list"></i>}
-                </button>
-            </div>
-            <div className={classes.sidebarDisplay}>
-                { open ?
-                    <div className={classes.sidebarOpenDisplay}>
-                        <p>IZBORNIK</p>
-                        <button><i className="bi bi-map"></i>KARTA</button>
-                        <button><i className="bi bi-table"></i>PODACI</button>
-                    </div>
+        <div className={ 'sidebar ' + (opened ? 'opened' : 'closed') }>
+            <button className='sidebar-toggle' onClick={ () => { setOpened(!opened) } }>
+                {
+                    opened
+                    ?
+                        <i className='bi bi-x'></i>
                     :
-                    <div className={classes.sidebarClosedDisplay}>
-                        <button onClick={ () => { navigate(routes.mapPage) } }><i className="bi bi-map"></i></button>
-                        <button onClick={ () => { navigate(routes.dataPage) } }><i className="bi bi-table"></i></button>
-                    </div>
-                    }
-            </div>
-            <div className={classes.sidebarLayers}>
-                {open ?
-                    <div className={classes.sidebarOpenLayers}>
-                        <p>SLOJEVI</p>
-                        <button><i className="bi bi-house"></i> OBJEKTI</button>
+                        <i className='bi bi-list'></i>
+                }
+            </button>
+            {
+                opened
+                ?
+                    <div className='menu'>
+                        <p>IZBORNIK</p>
+                        <button onClick={ () => { navigate(routes.mapPage) } } className={ location.pathname === routes.mapPage ? 'active' : '' }>
+                            <i className='bi bi-map'></i>KARTA
+                        </button>
+                        <button onClick={ () => { navigate(routes.dataPage) } } className={ location.pathname === routes.dataPage ? 'active' : '' }>
+                            <i className='bi bi-table'></i>PODACI
+                        </button>
                     </div>
                 :
-                <div className={classes.sidebarClosedLayers}>
-                    <button><i className="bi bi-house"></i></button>
-                </div>
+                    <div className='menu'>
+                        <button onClick={ () => { navigate(routes.mapPage) } } className={ location.pathname === routes.mapPage ? 'active' : '' }>
+                            <i className='bi bi-map'></i>
+                        </button>
+                        <button onClick={ () => { navigate(routes.dataPage) } } className={ location.pathname === routes.dataPage ? 'active' : '' }>
+                            <i className='bi bi-table'></i>
+                        </button>
+                    </div>
             }
-            </div>
+            {
+                opened
+                ?
+                    <div className='menu'>
+                        <p>SLOJEVI</p>
+                        <button>
+                            <i className='bi bi-house'></i> OBJEKTI
+                            <div className='form-check form-switch'>
+                                <input className='form-check-input' type='checkbox' role='switch'></input>
+                            </div>
+                        </button>
+                    </div>
+                : null
+            }
         </div>
-    )
-
+    );
 };
-
 
 export default Sidebar;
