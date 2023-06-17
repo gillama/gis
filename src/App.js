@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Map from './pages/map/Map';
+import Table from './pages/table/Table';
 import Sidebar from './components/sidebar/Sidebar';
 
 import routes from './routes';
 import objectsLayer from './store/layers/ObjectsLayer';
+import getGeoData from './services/GeoData';
 
 import './App.css';
 
 function App() {
+    const [geoData, setGeoData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setGeoData(await getGeoData())
+        };
+        fetchData();
+    }, []);
+
     const [layers, setLayers] = useState([
         {
             title: 'OBJEKTI',
@@ -40,6 +51,7 @@ function App() {
             <Sidebar layers={ layers } toggleLayer={ toggleLayer } />
             <Routes>
                 <Route exact path={ routes.mapPage } element={ <Map layers={ layers }/> }/>
+                <Route exact path={ routes.dataPage } element={ <Table data={ geoData } maxItemsPerPage={ 20 } /> }/>
             </Routes>
         </div>
     );

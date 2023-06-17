@@ -1,0 +1,25 @@
+.table-container {
+    padding: 45px;
+    width: 100%;
+}
+.table-container .table {
+    caret-color: transparent;
+}
+.table-container .table .header {
+    background-color: rgb(10, 25, 41) !important;
+    color: #B2BAC2 !important ;
+}
+.table-container .pagination .page-item .page-link {
+    color: rgb(10, 25, 41) !important;
+    caret-color: transparent;
+}
+.table-container .pagination .page-item .page-link:focus {
+    border: none;
+    background-color: rgb(20, 79, 141);
+    color: #FFFFFF !important;
+}
+.table-container .pagination .page-item .page-link.active {
+    border: none;
+    background-color: rgb(20, 79, 141) !important;
+    color: #FFFFFF !important;
+}
