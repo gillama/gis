@@ -17,7 +17,6 @@ const objectsLayer = new VectorLayer({
     }),
     style: new Style({
         image: new Icon({
-            color: 'white',
             scale: 0.05,
             crossOrigin: 'anonymous',
             src: 'images/object.svg',

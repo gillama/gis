@@ -19,13 +19,25 @@
 }
 .ol-zoom button,
 .ol-rotate button {
-    background-color:  rgb(10, 25, 41);
-    color:#B2BAC2;
+    background-color: rgb(10, 25, 41);
+    color: #B2BAC2;
     width: 40px;
     height: 40px;
     border: none;
 }
 .ol-zoom button:hover,
 .ol-rotate button:hover {
+    background-color:rgb(21, 51, 83);
+}
+
+.map .modal-header button,
+.map .modal-footer button {
+    border: none;
+    background-color: rgb(10, 25, 41);
+    color: #B2BAC2;
+    border-radius: 2px;
+}
+.map .modal-header button:hover,
+.map .modal-footer button:hover {
     background-color:rgb(21, 51, 83);
 }
