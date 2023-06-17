@@ -8,7 +8,7 @@ import Style from 'ol/style/Style';
 const objectsLayer = new VectorLayer({
     updateWhileAnimating: true,
     source: new Cluster({
-        distance: 40,
+        distance: 0,
         minDistance: 0,
         source: new VectorSource({
             url: 'https://plovput.li-st.net/getObjekti/',
