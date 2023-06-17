@@ -1,0 +1,31 @@
+.map {
+    width:100%;
+    height: 100vh;
+}
+.ol-zoom {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    caret-color: transparent;
+}
+.ol-rotate {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.ol-zoom button,
+.ol-rotate button {
+    background-color:  rgb(10, 25, 41);
+    color:#B2BAC2;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+.ol-zoom button:hover,
+.ol-rotate button:hover {
+    background-color:rgb(21, 51, 83);
+}
