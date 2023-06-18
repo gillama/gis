@@ -25,10 +25,19 @@ function App() {
         {
             title: 'OBJEKTI',
             icon: 'bi-house',
-            visible: false,
+            set: false,
             layer: objectsLayer
         },
         // add new layers here
+    ]);
+
+    const [options, setOptions] = useState([
+        {
+            title: 'CLUSTER',
+            icon: 'bi-funnel',
+            set: false
+        },
+        // add new options here
     ]);
 
     const toggleLayer = (idx) => {
@@ -37,7 +46,7 @@ function App() {
         }
 
         let layer = layers[idx];
-        layer.visible = !layer.visible;
+        layer.set = !layer.set;
 
         setLayers([
             ...layers.slice(0, idx),
@@ -46,12 +55,27 @@ function App() {
         ]);
     };
 
+    const toggleOption = (idx) => {
+        if (idx < 0 || idx >= options.length) {
+            return;
+        }
+
+        let option = options[idx];
+        option.set = !option.set;
+
+        setOptions([
+            ...options.slice(0, idx),
+            option,
+            ...options.slice(idx + 1)
+        ]);
+    };
+
     return (
         <div className='app'>
-            <Sidebar layers={ layers } toggleLayer={ toggleLayer } />
+            <Sidebar layers={ layers } options={ options } toggleLayer={ toggleLayer } toggleOption={ toggleOption }/>
             <Routes>
-                <Route exact path={ routes.mapPage } element={ <Map layers={ layers }/> }/>
-                <Route exact path={ routes.dataPage } element={ <Table data={ geoData } maxItemsPerPage={ 20 } /> }/>
+                <Route exact path={ routes.mapPage } element={ <Map layers={ layers } options={ options }/> }/>
+                <Route exact path={ routes.dataPage } element={ <Table data={ geoData } maxItemsPerPage={ 20 }/> }/>
             </Routes>
         </div>
     );

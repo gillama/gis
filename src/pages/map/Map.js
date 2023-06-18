@@ -12,7 +12,7 @@ import objectsLayer from '../../store/layers/ObjectsLayer';
 
 import './Map.css';
 
-const Map = ({ layers }) => {
+const Map = ({ layers, options }) => {
     /* eslint-disable no-unused-vars */
     const [map, setMap] = useState();
     /* eslint-enable no-unused-vars */
@@ -63,7 +63,7 @@ const Map = ({ layers }) => {
         });
 
         selectObject.on('select', (e) => {
-            if (e.selected.length == 0 || e.selected[0].values_.features.length == 0) {
+            if (e.selected.length === 0 || e.selected[0].values_.features.length === 0) {
                 return;
             }
 
@@ -84,9 +84,16 @@ const Map = ({ layers }) => {
     }, [additionalLayers]);
 
     useEffect(() => {
-        const visibleLayers = layers.filter(l => l.visible).map(l => l.layer);
+        const visibleLayers = layers.filter(l => l.set).map(l => l.layer);
         setAdditionalLayers(visibleLayers);
     }, [layers]);
+
+    useEffect(() => {
+        const clusterOption = options.find(o => o.title === 'CLUSTER');
+        if (clusterOption.set) {
+            // set cluster on vector layer
+        }
+    }, [options]);
 
     const hideModal = () => {
         const bsModal = Modal.getInstance(modal.current)
@@ -98,7 +105,7 @@ const Map = ({ layers }) => {
             <div ref={ mapElement } style={{ position:'relative', overflow:'hidden', width: '100%', height: '100%'}}></div>
 
             <div ref={ modal } className='modal fade'>
-                <div className='modal-dialog modal-lg' role='document'>
+                <div className='modal-dialog' role='document'>
                     <div className='modal-content'>
                         <div className='modal-header'>
                             <h5 className='modal-title'>Info</h5>

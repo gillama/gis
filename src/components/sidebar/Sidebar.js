@@ -4,8 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import routes from '../../routes';
 
 import './Sidebar.css';
+import SidebarSection from './SidebarSection';
 
-const Sidebar = ({ layers, toggleLayer }) => {
+const Sidebar = ({ layers, options, toggleLayer, toggleOption }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -44,33 +45,8 @@ const Sidebar = ({ layers, toggleLayer }) => {
                     </button>
                 </div>
             }
-            {
-                opened
-                ?
-                <div className='menu'>
-                    {
-                        layers.map((layer, idx) =>
-                            <div key={ idx }>
-                                <p>{ layer.title }</p>
-                                <button>
-                                    <i className={ 'bi ' + layer.icon }></i> { layer.title }
-                                    <div className='form-check form-switch'>
-                                        <input
-                                            className='form-check-input'
-                                            type='checkbox'
-                                            role='switch'
-                                            checked={ layer.visible }
-                                            onChange={ () => { toggleLayer(idx) } }>
-                                        </input>
-                                    </div>
-                                </button>
-                            </div>
-                        )
-                    }
-                </div>
-                :
-                null
-            }
+            { opened ? <SidebarSection title='SLOJEVI' items={ layers } toggle={ toggleLayer } /> : null }
+            { opened ? <SidebarSection title='POSTAVKE' items={ options } toggle={ toggleOption } /> : null }
         </div>
     );
 };
