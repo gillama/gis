@@ -1,5 +1,5 @@
 const routes = {
-    mapPage: "/map",
+    mapPage: "/",
     dataPage: "/data",
 };
 export default routes;
